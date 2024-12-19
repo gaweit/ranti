@@ -4,7 +4,7 @@
 $servername = "localhost";
 $username = "root"; // Ganti dengan username database Anda
 $password = ""; // Ganti dengan password database Anda
-$dbname = "db_seminar_online"; // Ganti dengan nama database Anda
+$dbname = "ranti"; // Ganti dengan nama database Anda
 
 // Buat koneksi
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -52,6 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>formulir Daftar</title>
     <style>
@@ -59,6 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             font-family: Arial, sans-serif;
             margin: 20px;
         }
+
         .form-container {
             width: 500px;
             margin: auto;
@@ -66,26 +68,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             border: 1px solid #ccc;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            background-color: #f8d7da; /* Background form merah */
+            background-color: #f8d7da;
+            /* Background form merah */
         }
+
         .form-container h2 {
             text-align: center;
         }
+
         .form-group {
             margin-bottom: 15px;
         }
+
         .form-group label {
             display: block;
             margin-bottom: 5px;
         }
-        .form-group input, .form-group textarea, .form-group select {
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
             width: 100%;
             padding: 8px;
             box-sizing: border-box;
         }
+
         .form-group input[type="file"] {
             padding: 3px;
         }
+
         .form-group button {
             width: 100%;
             padding: 10px;
@@ -95,25 +106,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             border-radius: 4px;
             cursor: pointer;
         }
+
         .form-group a {
             display: block;
             text-align: center;
             margin-top: 15px;
             font-size: 18px;
             font-weight: bold;
-            color: purple; /* Warna ungu */
-            background-color: white; /* Background putih */
+            color: purple;
+            /* Warna ungu */
+            background-color: white;
+            /* Background putih */
             padding: 10px;
             border: 1px solid purple;
             border-radius: 5px;
             text-decoration: none;
         }
+
         .form-group a:hover {
-            color: darkviolet; /* Warna lebih gelap saat hover */
-            background-color: #f8f9fa; /* Background lebih terang saat hover */
+            color: darkviolet;
+            /* Warna lebih gelap saat hover */
+            background-color: #f8f9fa;
+            /* Background lebih terang saat hover */
         }
     </style>
 </head>
+
 <body>
     <div class="form-container">
         <h2>Data Peserta</h2>
@@ -168,4 +186,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </form>
     </div>
 </body>
+
 </html>

@@ -1,52 +1,54 @@
 Berikan kod<?php
-// Koneksi ke database
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "db_seminar_online";
+            // Koneksi ke database
+            $servername = "localhost";
+            $username = "root";
+            $password = "";
+            $dbname = "ranti";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+            $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Periksa koneksi
-if ($conn->connect_error) {
-    die("Koneksi gagal: " . $conn->connect_error);
-}
+            // Periksa koneksi
+            if ($conn->connect_error) {
+                die("Koneksi gagal: " . $conn->connect_error);
+            }
 
-// Query untuk mendapatkan total seminar
-$sql_total_seminar = "SELECT COUNT(*) AS total_seminar FROM tb_seminar";
-$result_total_seminar = $conn->query($sql_total_seminar);
-$total_seminar = $result_total_seminar->fetch_assoc()['total_seminar'];
+            // Query untuk mendapatkan total seminar
+            $sql_total_seminar = "SELECT COUNT(*) AS total_seminar FROM tb_seminar";
+            $result_total_seminar = $conn->query($sql_total_seminar);
+            $total_seminar = $result_total_seminar->fetch_assoc()['total_seminar'];
 
-// Query untuk mendapatkan jumlah seminar berdasarkan status (selesai/belum selesai)
-$sql_seminar_status = "SELECT 
+            // Query untuk mendapatkan jumlah seminar berdasarkan status (selesai/belum selesai)
+            $sql_seminar_status = "SELECT 
                         COUNT(*) AS total_ongoing,
                         (SELECT COUNT(*) FROM tb_seminar WHERE Tanggal < NOW()) AS total_completed
                         FROM tb_seminar WHERE Tanggal >= NOW()";
-$result_seminar_status = $conn->query($sql_seminar_status);
-$seminar_status = $result_seminar_status->fetch_assoc();
+            $result_seminar_status = $conn->query($sql_seminar_status);
+            $seminar_status = $result_seminar_status->fetch_assoc();
 
-// Query untuk mendapatkan jumlah seminar berdasarkan narasumber
-$sql_seminar_narasumber = "SELECT Narasumber, COUNT(*) AS total_narasumber
+            // Query untuk mendapatkan jumlah seminar berdasarkan narasumber
+            $sql_seminar_narasumber = "SELECT Narasumber, COUNT(*) AS total_narasumber
                            FROM tb_seminar 
                            GROUP BY Narasumber";
-$result_seminar_narasumber = $conn->query($sql_seminar_narasumber);
+            $result_seminar_narasumber = $conn->query($sql_seminar_narasumber);
 
-// Query untuk mendapatkan seminar berdasarkan lokasi
-$sql_seminar_lokasi = "SELECT Lokasi, COUNT(*) AS total_lokasi
+            // Query untuk mendapatkan seminar berdasarkan lokasi
+            $sql_seminar_lokasi = "SELECT Lokasi, COUNT(*) AS total_lokasi
                        FROM tb_seminar 
                        GROUP BY Lokasi";
-$result_seminar_lokasi = $conn->query($sql_seminar_lokasi);
+            $result_seminar_lokasi = $conn->query($sql_seminar_lokasi);
 
-?>
+            ?>
 
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Statistik Seminar</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
     <div class="container mt-5">
         <h1 class="text-center">Statistik Seminar</h1>
@@ -113,6 +115,7 @@ $result_seminar_lokasi = $conn->query($sql_seminar_lokasi);
         </div>
     </div>
 </body>
+
 </html>
 
 <?php

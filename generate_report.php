@@ -7,7 +7,7 @@ use Mpdf\Mpdf;
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "db_seminar_online";
+$dbname = "ranti";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -70,4 +70,3 @@ $mpdf->WriteHTML($html);
 
 // Output file PDF ke browser
 $mpdf->Output('Laporan_Seminar.pdf', 'D'); // 'D' untuk download
-?>

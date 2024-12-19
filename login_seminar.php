@@ -5,7 +5,7 @@ session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "db_seminar_online";
+$dbname = "ranti";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -58,6 +58,7 @@ $conn->close();
 
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -73,6 +74,7 @@ $conn->close();
             align-items: center;
             height: 100vh;
         }
+
         .container {
             background-color: #ffffff;
             padding: 20px 30px;
@@ -82,12 +84,15 @@ $conn->close();
             width: 100%;
             max-width: 400px;
         }
+
         h2 {
             color: #333333;
         }
+
         form {
             margin-top: 20px;
         }
+
         label {
             display: block;
             text-align: left;
@@ -95,6 +100,7 @@ $conn->close();
             margin-bottom: 5px;
             color: #555555;
         }
+
         input[type="text"],
         input[type="password"] {
             width: 100%;
@@ -103,6 +109,7 @@ $conn->close();
             border: 1px solid #ddd;
             border-radius: 5px;
         }
+
         button {
             background-color: #007bff;
             color: #ffffff;
@@ -112,20 +119,25 @@ $conn->close();
             cursor: pointer;
             font-size: 16px;
         }
+
         button:hover {
             background-color: #0056b3;
         }
+
         p {
             margin-top: 20px;
             color: #555555;
         }
+
         a {
             color: #007bff;
             text-decoration: none;
         }
+
         a:hover {
             text-decoration: underline;
         }
+
         .error-message {
             color: red;
             margin-top: -15px;
@@ -133,28 +145,30 @@ $conn->close();
         }
     </style>
 </head>
+
 <body>
 
-<div class="container">
-    <h2>Login</h2>
-    <form method="post" action="">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
+    <div class="container">
+        <h2>Login</h2>
+        <form method="post" action="">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
 
-        <button type="submit" name="login">Login</button>
+            <button type="submit" name="login">Login</button>
 
-        <?php
-        if (isset($error_message)) {
-            echo "<p class='error-message'>$error_message</p>";
-        }
-        ?>
-    </form>
+            <?php
+            if (isset($error_message)) {
+                echo "<p class='error-message'>$error_message</p>";
+            }
+            ?>
+        </form>
 
-    <p>Belum punya akun? <a href="register.php">Daftar sekarang</a></p>
-</div>
+        <p>Belum punya akun? <a href="register.php">Daftar sekarang</a></p>
+    </div>
 
 </body>
+
 </html>

@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "db_seminar_online";
+$dbname = "ranti";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -30,4 +30,3 @@ if ($conn->query($sql) === TRUE) {
 }
 
 $conn->close();
-?>

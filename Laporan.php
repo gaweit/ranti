@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "db_seminar_online";
+$dbname = "ranti";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -20,16 +20,18 @@ $result = $conn->query($sql);
 
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laporan Seminar</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
     <div class="container mt-5">
         <h1 class="text-center">Laporan Seminar</h1>
-        
+
         <!-- Tombol untuk download laporan PDF -->
         <div class="text-end mb-3">
             <a href="generate_report.php" class="btn btn-success">Unduh Laporan PDF</a>
@@ -75,6 +77,7 @@ $result = $conn->query($sql);
         </table>
     </div>
 </body>
+
 </html>
 
 <?php

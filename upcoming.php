@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "db_seminar_online";
+$dbname = "ranti";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -19,6 +19,7 @@ $result = $conn->query($sql);
 
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,6 +31,7 @@ $result = $conn->query($sql);
             background-color: #f4f4f4;
             padding: 20px;
         }
+
         .container {
             max-width: 800px;
             margin: auto;
@@ -38,6 +40,7 @@ $result = $conn->query($sql);
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
+
         .seminar-item {
             border: 1px solid #ddd;
             padding: 15px;
@@ -45,22 +48,27 @@ $result = $conn->query($sql);
             margin-bottom: 20px;
             background-color: #fff;
         }
+
         .seminar-item h3 {
             margin: 0;
             color: #2c3e50;
         }
+
         .seminar-item p {
             margin: 5px 0;
         }
+
         .btn-primary {
             background-color: #2980b9;
             border: none;
         }
+
         .btn-primary:hover {
             background-color: #3498db;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1 class="mb-4">Seminari Mendatang</h1>
@@ -88,6 +96,7 @@ $result = $conn->query($sql);
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
 
 <?php

@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "db_seminar_online";
+$dbname = "ranti";
 
 // Membuat koneksi
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -37,10 +37,12 @@ $conn->close();
 
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <title>Pendaftaran</title>
 </head>
+
 <body>
     <form method="POST" action="">
         <h2>Daftar Akun</h2>
@@ -53,4 +55,5 @@ $conn->close();
         <button type="submit" name="register">Daftar</button>
     </form>
 </body>
+
 </html>

@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "db_seminar_online";
+$dbname = "ranti";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -25,7 +25,7 @@ if (isset($_GET['action'])) {
         $posisi = $_POST['posisi'];
         $kategori = $_POST['kategori'];
         $kehadiran = $_POST['kehadiran'];
-        
+
         // Handle upload file
         $upload_file = $_FILES['file']['name'];
         $target_dir = "uploads/";
@@ -64,7 +64,7 @@ if (isset($_GET['action'])) {
         $posisi = $_POST['posisi'];
         $kategori = $_POST['kategori'];
         $kehadiran = $_POST['kehadiran'];
-        
+
         // Handle upload file
         if ($_FILES['file']['name'] != '') {
             $upload_file = $_FILES['file']['name'];
@@ -101,78 +101,80 @@ if (isset($_GET['query'])) {
 
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <title>Data Peserta</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
     <div class="container">
         <h1>Data Peserta</h1>
-        
+
         <!-- Tombol Tambah Peserta -->
         <a href="?action=tambah" class="btn btn-primary mb-3">Tambah Peserta</a>
 
         <!-- Tabel Data Peserta -->
         <table class="table table-bordered table-hover">
-    <thead>
-        <tr>
-            <th>No</th>
-            <th>Nama</th>
-            <th>Email</th>
-            <th>Telepon</th>
-            <th>Alamat</th>
-            <th>Posisi</th>
-            <th>Kategori</th>
-            <th>Kehadiran</th>
-            <th>Foto</th>
-            <th>Dibuat</th>
-            <th>Aksi</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-        if ($result->num_rows > 0) {
-            $no = 1;
-            while ($row = $result->fetch_assoc()) {
-                echo "<tr>";
-                echo "<td>" . $no++ . "</td>";
-                echo "<td>" . htmlspecialchars($row['Nama']) . "</td>";
-                echo "<td>" . htmlspecialchars($row['Email']) . "</td>";
-                echo "<td>" . htmlspecialchars($row['Telepon']) . "</td>";
-                echo "<td>" . htmlspecialchars($row['Alamat']) . "</td>";
-                echo "<td>" . htmlspecialchars($row['Posisi']) . "</td>";
-                echo "<td>" . htmlspecialchars($row['Kategori']) . "</td>";
-                echo "<td>" . htmlspecialchars($row['Kehadiran']) . "</td>";
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama</th>
+                    <th>Email</th>
+                    <th>Telepon</th>
+                    <th>Alamat</th>
+                    <th>Posisi</th>
+                    <th>Kategori</th>
+                    <th>Kehadiran</th>
+                    <th>Foto</th>
+                    <th>Dibuat</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                if ($result->num_rows > 0) {
+                    $no = 1;
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<tr>";
+                        echo "<td>" . $no++ . "</td>";
+                        echo "<td>" . htmlspecialchars($row['Nama']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['Email']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['Telepon']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['Alamat']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['Posisi']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['Kategori']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['Kehadiran']) . "</td>";
 
-                // Menampilkan foto dari folder uploads berdasarkan field Upload_file
-                $fotoPath = !empty($row['Upload_file']) ? "uploads/" . $row['Upload_file'] : "assets/images/default.jpg";
-                echo "<td><img src='" . htmlspecialchars($fotoPath) . "' alt='Foto Peserta' style='width: 80px; height: 80px; object-fit: cover; border-radius: 5px;'></td>";
+                        // Menampilkan foto dari folder uploads berdasarkan field Upload_file
+                        $fotoPath = !empty($row['Upload_file']) ? "uploads/" . $row['Upload_file'] : "assets/images/default.jpg";
+                        echo "<td><img src='" . htmlspecialchars($fotoPath) . "' alt='Foto Peserta' style='width: 80px; height: 80px; object-fit: cover; border-radius: 5px;'></td>";
 
-                // Pastikan 'Dibuat' ada sebelum digunakan
-                if (isset($row['Dibuat'])) {
-                    echo "<td>" . date('d-m-Y H:i:s', strtotime($row['Dibuat'])) . "</td>";
-                } else {
-                    echo "<td>-</td>"; // Jika tidak ada 'Dibuat', tampilkan tanda '-'
-                }
+                        // Pastikan 'Dibuat' ada sebelum digunakan
+                        if (isset($row['Dibuat'])) {
+                            echo "<td>" . date('d-m-Y H:i:s', strtotime($row['Dibuat'])) . "</td>";
+                        } else {
+                            echo "<td>-</td>"; // Jika tidak ada 'Dibuat', tampilkan tanda '-'
+                        }
 
-                echo "<td>
+                        echo "<td>
                         <div class='d-flex justify-content-start'>
                             <a href='?action=edit&id=" . $row['Id_Peserta'] . "' class='btn btn-warning btn-sm me-2'>Edit</a>
                             <a href='?action=hapus&id=" . $row['Id_Peserta'] . "' class='btn btn-danger btn-sm' onclick='return confirm(\"Yakin ingin menghapus?\")'>Hapus</a>
                         </div>
                       </td>";
-                echo "</tr>";
-            }
-        } else {
-            echo "<tr><td colspan='11'>Tidak ada data peserta.</td></tr>";
-        }
-        ?>
-    </tbody>
-</table>
+                        echo "</tr>";
+                    }
+                } else {
+                    echo "<tr><td colspan='11'>Tidak ada data peserta.</td></tr>";
+                }
+                ?>
+            </tbody>
+        </table>
 
 
-        
+
         <!-- Form untuk pencarian peserta -->
         <form class="mt-4" method="GET" action="">
             <div class="input-group mb-3">
@@ -187,7 +189,7 @@ if (isset($_GET['query'])) {
     if (isset($_GET['action']) && ($_GET['action'] == 'tambah' || $_GET['action'] == 'edit')) {
         $isEdit = ($_GET['action'] == 'edit');
         $pesertaData = $isEdit ? $peserta : null;
-        ?>
+    ?>
 
         <div class="container">
             <h1><?= $isEdit ? 'Edit Peserta' : 'Tambah Peserta' ?></h1>
@@ -242,6 +244,7 @@ if (isset($_GET['query'])) {
     ?>
 
 </body>
+
 </html>
 
 <?php

@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "db_seminar_online";
+$dbname = "ranti";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -26,6 +26,7 @@ $pengguna = [
 
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,37 +39,45 @@ $pengguna = [
             margin: 0;
             font-family: Arial, sans-serif;
         }
+
         .sidebar {
             background-color: #2c3e50;
             color: #ecf0f1;
             width: 250px;
             padding: 20px;
         }
+
         .sidebar h2 {
             font-size: 24px;
             margin-bottom: 20px;
         }
+
         .sidebar ul {
             list-style: none;
             padding: 0;
         }
+
         .sidebar ul li {
             margin: 15px 0;
         }
+
         .sidebar ul li a {
             color: #ecf0f1;
             text-decoration: none;
             font-size: 18px;
         }
+
         .sidebar ul li a:hover {
             text-decoration: underline;
         }
+
         .content {
             flex: 1;
             padding: 20px;
             background-color: #f4f4f4;
             overflow-y: auto;
         }
+
         .card {
             background: white;
             padding: 20px;
@@ -76,6 +85,7 @@ $pengguna = [
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
         }
+
         button {
             background-color: #2980b9;
             color: white;
@@ -84,11 +94,13 @@ $pengguna = [
             border-radius: 5px;
             cursor: pointer;
         }
+
         button:hover {
             background-color: #3498db;
         }
     </style>
 </head>
+
 <body>
     <!-- Sidebar -->
     <div class="sidebar">
@@ -119,20 +131,20 @@ $pengguna = [
 
         <!-- Bagian Seminar Mendatang -->
         <?php if ($seminarAkanDatang): ?>
-        <section id="upcoming" class="card">
-            <h2>Seminar Mendatang</h2>
-            <p><strong>Judul:</strong> <?= htmlspecialchars($seminarAkanDatang['Judul']) ?></p>
-            <p><strong>Deskripsi:</strong> <?= htmlspecialchars($seminarAkanDatang['Deskripsi']) ?></p>
-            <p><strong>Tanggal:</strong> <?= date('d-m-Y', strtotime($seminarAkanDatang['Tanggal'])) ?></p>
-            <p><strong>Lokasi:</strong> <?= htmlspecialchars($seminarAkanDatang['Lokasi']) ?></p>
-            <p><strong>Narasumber:</strong> <?= htmlspecialchars($seminarAkanDatang['Narasumber']) ?></p>
-            <button id="join-seminar-btn">Ikuti Seminar</button>
-        </section>
+            <section id="upcoming" class="card">
+                <h2>Seminar Mendatang</h2>
+                <p><strong>Judul:</strong> <?= htmlspecialchars($seminarAkanDatang['Judul']) ?></p>
+                <p><strong>Deskripsi:</strong> <?= htmlspecialchars($seminarAkanDatang['Deskripsi']) ?></p>
+                <p><strong>Tanggal:</strong> <?= date('d-m-Y', strtotime($seminarAkanDatang['Tanggal'])) ?></p>
+                <p><strong>Lokasi:</strong> <?= htmlspecialchars($seminarAkanDatang['Lokasi']) ?></p>
+                <p><strong>Narasumber:</strong> <?= htmlspecialchars($seminarAkanDatang['Narasumber']) ?></p>
+                <button id="join-seminar-btn">Ikuti Seminar</button>
+            </section>
         <?php else: ?>
-        <section id="upcoming" class="card">
-            <h2>Tidak Ada Seminar Mendatang</h2>
-            <p>Anda belum terdaftar untuk seminar mendatang.</p>
-        </section>
+            <section id="upcoming" class="card">
+                <h2>Tidak Ada Seminar Mendatang</h2>
+                <p>Anda belum terdaftar untuk seminar mendatang.</p>
+            </section>
         <?php endif; ?>
     </div>
 
@@ -140,7 +152,10 @@ $pengguna = [
         // Muat data pengguna secara dinamis
         document.addEventListener("DOMContentLoaded", () => {
             const userName = document.getElementById("user-name").textContent;
-            console.log(Pengguna ${userName} sedang login.);
+            console.log(Pengguna $ {
+                    userName
+                }
+                sedang login.);
         });
 
         // Tombol Ikuti Seminar
@@ -157,6 +172,7 @@ $pengguna = [
         });
     </script>
 </body>
+
 </html>
 
 <?php

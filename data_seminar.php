@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "db_seminar_online";
+$dbname = "ranti";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -84,15 +84,17 @@ if (isset($_GET['query'])) {
 
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <title>Data Seminar</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
     <div class="container">
         <h1>Data Seminar</h1>
-        
+
         <!-- Tombol Tambah Seminar -->
         <a href="?action=tambah" class="btn btn-primary mb-3">Tambah Seminar</a>
 
@@ -126,8 +128,8 @@ if (isset($_GET['query'])) {
                         echo "<td>" . htmlspecialchars($row['Kapasitas']) . "</td>";
                         echo "<td>Rp " . number_format($row['Harga'], 0, ',', '.') . "</td>";
                         echo "<td>" . htmlspecialchars($row['Narasumber']) . "</td>";
-                        
-                        
+
+
                         // Pastikan 'created_at' ada sebelum digunakan
                         if (isset($row['Dibuat'])) {
                             echo "<td>" . date('d-m-Y H:i:s', strtotime($row['Dibuat'])) . "</td>";
@@ -149,7 +151,7 @@ if (isset($_GET['query'])) {
                 ?>
             </tbody>
         </table>
-        
+
         <!-- Form untuk pencarian seminar -->
         <form class="mt-4" method="GET" action="">
             <div class="input-group mb-3">
@@ -164,7 +166,7 @@ if (isset($_GET['query'])) {
     if (isset($_GET['action']) && ($_GET['action'] == 'tambah' || $_GET['action'] == 'edit')) {
         $isEdit = ($_GET['action'] == 'edit');
         $seminarData = $isEdit ? $seminar : null;
-        ?>
+    ?>
 
         <div class="container">
             <h1><?= $isEdit ? 'Edit Seminar' : 'Tambah Seminar' ?></h1>
@@ -208,6 +210,7 @@ if (isset($_GET['query'])) {
     ?>
 
 </body>
+
 </html>
 
 <?php

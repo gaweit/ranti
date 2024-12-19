@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = getenv('DB_PASSWORD'); // Menggunakan variabel lingkungan untuk keamanan
-$dbname = "db_seminar_online";
+$dbname = "ranti";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -46,82 +46,100 @@ $conn->close();
 ?>
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <title>Form Seminar</title>
     <!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <title>Form Seminar</title>
-    <style>
-        form {
-            width: 600px;
-            margin: 20px auto;
-            border: 1px solid #ccc;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
-            background-color: #f8d7da; /* Background form menjadi merah */
-        }
-        form h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        label {
-            display: block;
-            margin: 10px 0 5px;
-        }
-        input, textarea, select {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-        input[type="submit"] {
-            background-color: #28a745;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            padding: 10px 15px;
-            border-radius: 4px;
-        }
-        input[type="submit"]:hover {
-            background-color: #218838;
-        }
-        .link-simpan {
-            display: block;
-            text-align: center;
-            margin-top: 15px;
-            font-size: 18px;
-            font-weight: bold;
-            color: purple; /* Warna ungu */
-            background-color: white; /* Background putih */
-            padding: 10px;
-            border: 1px solid purple;
-            border-radius: 5px;
-            text-decoration: none;
-        }
-        .link-simpan:hover {
-            color: darkviolet; /* Warna lebih gelap saat hover */
-            background-color: #f8f9fa; /* Background lebih terang saat hover */
-        }
-    </style>
-</head>
-<body>
-     <?php
-                        $result = mysqli_query($conn, "SELECT COUNT(*) AS total FROM tb_mahasiswa");
-                        if (!$result) {
-                            echo "<div class='alert alert-danger'>Error: " . mysqli_error($conn) . "</div>";
-                        } else {
-                            $data = mysqli_fetch_assoc($result);
-                            echo "<h3>" . $data['total'] . "</h3>";
-                        }
-                        ?>
+    <html lang="id">
 
-        <!-- Tambahkan link simpan di tengah form -->
-        <a href="selesai.php" class="link-simpan">Simpan</a>
+    <head>
+        <meta charset="UTF-8">
+        <title>Form Seminar</title>
+        <style>
+            form {
+                width: 600px;
+                margin: 20px auto;
+                border: 1px solid #ccc;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+                background-color: #f8d7da;
+                /* Background form menjadi merah */
+            }
+
+            form h2 {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            label {
+                display: block;
+                margin: 10px 0 5px;
+            }
+
+            input,
+            textarea,
+            select {
+                width: 100%;
+                padding: 8px;
+                margin-bottom: 10px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+            }
+
+            input[type="submit"] {
+                background-color: #28a745;
+                color: #fff;
+                border: none;
+                cursor: pointer;
+                padding: 10px 15px;
+                border-radius: 4px;
+            }
+
+            input[type="submit"]:hover {
+                background-color: #218838;
+            }
+
+            .link-simpan {
+                display: block;
+                text-align: center;
+                margin-top: 15px;
+                font-size: 18px;
+                font-weight: bold;
+                color: purple;
+                /* Warna ungu */
+                background-color: white;
+                /* Background putih */
+                padding: 10px;
+                border: 1px solid purple;
+                border-radius: 5px;
+                text-decoration: none;
+            }
+
+            .link-simpan:hover {
+                color: darkviolet;
+                /* Warna lebih gelap saat hover */
+                background-color: #f8f9fa;
+                /* Background lebih terang saat hover */
+            }
+        </style>
+    </head>
+
+<body>
+    <?php
+    $result = mysqli_query($conn, "SELECT COUNT(*) AS total FROM tb_mahasiswa");
+    if (!$result) {
+        echo "<div class='alert alert-danger'>Error: " . mysqli_error($conn) . "</div>";
+    } else {
+        $data = mysqli_fetch_assoc($result);
+        echo "<h3>" . $data['total'] . "</h3>";
+    }
+    ?>
+
+    <!-- Tambahkan link simpan di tengah form -->
+    <a href="selesai.php" class="link-simpan">Simpan</a>
     </form>
 </body>
+
 </html>

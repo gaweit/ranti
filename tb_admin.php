@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = getenv('DB_PASSWORD'); // Menggunakan variabel lingkungan untuk keamanan
-$dbname = "db_seminar_online";
+$dbname = "ranti";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -47,6 +47,7 @@ $conn->close();
 ?>
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <title>Form Admin</title>
@@ -58,23 +59,30 @@ $conn->close();
             padding: 20px;
             border-radius: 8px;
             box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
-            background-color: #f8d7da; /* Background form merah */
+            background-color: #f8d7da;
+            /* Background form merah */
         }
+
         form h2 {
             text-align: center;
             margin-bottom: 20px;
         }
+
         label {
             display: block;
             margin: 10px 0 5px;
         }
-        input, textarea, select {
+
+        input,
+        textarea,
+        select {
             width: 100%;
             padding: 8px;
             margin-bottom: 10px;
             border: 1px solid #ddd;
             border-radius: 4px;
         }
+
         input[type="submit"] {
             background-color: #28a745;
             color: #fff;
@@ -83,28 +91,36 @@ $conn->close();
             padding: 10px 15px;
             border-radius: 4px;
         }
+
         .form-group {
             margin-bottom: 15px;
         }
+
         .form-group a {
             display: block;
             text-align: center;
             margin-top: 15px;
             font-size: 18px;
             font-weight: bold;
-            color: purple; /* Warna ungu */
-            background-color: white; /* Background putih */
+            color: purple;
+            /* Warna ungu */
+            background-color: white;
+            /* Background putih */
             padding: 10px;
             border: 1px solid purple;
             border-radius: 5px;
             text-decoration: none;
         }
+
         .form-group a:hover {
-            color: darkviolet; /* Warna lebih gelap saat hover */
-            background-color: #f8f9fa; /* Background lebih terang saat hover */
+            color: darkviolet;
+            /* Warna lebih gelap saat hover */
+            background-color: #f8f9fa;
+            /* Background lebih terang saat hover */
         }
     </style>
 </head>
+
 <body>
     <form action="simpan_admin.php" method="post" enctype="multipart/form-data">
         <h2>Data Admin</h2>
@@ -168,4 +184,5 @@ $conn->close();
         </div>
     </form>
 </body>
+
 </html>
