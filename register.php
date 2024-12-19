@@ -141,8 +141,8 @@ $conn->close();
             <label for="role">Role:</label>
             <select id="role" name="role" required>
                 <option value="user">User</option>
-                <option value="admin">Admin</option>
-                <option value="pimpinan">Pimpinan</option>
+                <!-- <option value="admin">Admin</option>
+                <option value="pimpinan">Pimpinan</option> -->
             </select>
 
             <button type="submit" name="register">Daftar</button>

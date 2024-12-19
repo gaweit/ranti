@@ -40,7 +40,7 @@ if (isset($_POST['login'])) {
                 header("Location: laporan.php");
                 exit();
             } elseif ($user['role'] == 'User') {
-                header("Location: dashboard_user.php");
+                header("Location: dasboard_user.php");
                 exit();
             } else {
                 $error_message = "Peran tidak dikenali!";

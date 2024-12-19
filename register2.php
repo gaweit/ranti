@@ -20,7 +20,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $telepon = $_POST['telepon'];
     $alamat = $_POST['alamat'];
-    $institusi = $_POST['institusi'];
     $posisi = $_POST['posisi'];
     $kategori = $_POST['kategori'];
     $kehadiran = $_POST['kehadiran'];
@@ -36,11 +35,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     move_uploaded_file($foto_tmp, $target_file);
 
     // Simpan data ke database
-    $sql = "INSERT INTO peserta (nama, email, telepon, alamat, institusi, posisi, kategori, kehadiran, foto)
-            VALUES ('$nama', '$email', '$telepon', '$alamat', '$institusi', '$posisi', '$kategori', '$kehadiran', '$foto')";
+    $sql = "INSERT INTO tb_peserta (nama, email, telepon, alamat, posisi, kategori, kehadiran, Upload_file)
+            VALUES ('$nama', '$email', '$telepon', '$alamat', '$posisi', '$kategori', '$kehadiran', '$foto')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "<script>alert('Data peserta berhasil disimpan!'); window.location.href='form_pendaftaran.php';</script>";
+        echo "<script>alert('Data peserta berhasil disimpan!'); window.location.href='dasboard_user.php';</script>";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
@@ -54,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
 
 <head>
-    <title>formulir Daftar</title>
+    <title>Formulir Daftar</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -153,10 +152,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <textarea id="alamat" name="alamat" required></textarea>
             </div>
             <div class="form-group">
-                <label for="institusi">Institusi:</label>
-                <input type="text" id="institusi" name="institusi" required>
-            </div>
-            <div class="form-group">
                 <label for="posisi">Posisi:</label>
                 <input type="text" id="posisi" name="posisi" required>
             </div>
@@ -181,7 +176,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <!-- Tombol simpan dengan tampilan yang sudah diminta -->
             <div class="form-group">
-                <a href="Index.php">Simpan</a>
+                <button type="submit" class="btn btn-primary">Simpan</button>
+                <!-- <a href="Index.php">Simpan</a> -->
             </div>
         </form>
     </div>
